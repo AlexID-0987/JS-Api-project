@@ -23,13 +23,3 @@ fetchData().then(data => {
     console.error('Error fetching data:', error);
 });
 
-document.getElementById("refresh-button").addEventListener("click", event => {
-    fetch(`https://localhost:7188/api/Pet`,{method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ type:"Dog", name:"New Pet"})})
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
