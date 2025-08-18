@@ -22,12 +22,12 @@ fetchData().then(data => {
         typeCell.textContent = pet.type;
 
         const editButton = document.createElement("td");
-        //editButton.className = "btn btn-primary";
         editButton.textContent = "Edit";
         editButton.innerHTML=`<a href="common/update/html/update.html?id=${pet.id}">|Edit|</a>`;
-        //editButton.link=`<a href="common/update/html/update.html?id=${pet.id}"></a>`;
-        
         editCell.appendChild(editButton);
+        const deleteButton = document.createElement("td");
+        deleteButton.innerHTML=`<a href="common/delete/delete.html?id=${pet.id}">|Delete|</a>`;
+        editCell.appendChild(deleteButton);
 
         row.appendChild(idCell);
         row.appendChild(nameCell);
@@ -39,4 +39,6 @@ fetchData().then(data => {
 }).catch(error => {
     console.error('Error fetching data:', error);
 });
+
+
 

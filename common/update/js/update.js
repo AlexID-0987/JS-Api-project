@@ -29,6 +29,7 @@ document.forms["edit-pet-form"].addEventListener("submit", async (event) => {
     try {
         const updatedPet = await updatePet(pet.id, pet);
         console.log(`Updated pet with ID: ${pet.id}`, updatedPet);
+        window.location.href = "../../../Index.html";
     } catch (error) {
         console.error('Error updating pet:', error);
     }
