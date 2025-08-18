@@ -8,16 +8,33 @@ async function fetchData() {
 
     
 }
-const items=document.getElementById("pet-list");
+const items=document.getElementById("pet-table-body");
 
 fetchData().then(data => {
     data.forEach(pet => {
-        const listItem = document.createElement("li");
-        const iditem=document.createElement("span");
-        iditem.textContent = `ID: ${pet.id} - `;
-        listItem.textContent = pet.name;
-        listItem.prepend(iditem);
-        items.appendChild(listItem);
+        const row = document.createElement("tr");
+        const idCell = document.createElement("td");
+        const nameCell = document.createElement("td");
+        const typeCell = document.createElement("td");
+        const editCell = document.createElement("td");
+        idCell.textContent = pet.id;
+        nameCell.textContent = pet.name;
+        typeCell.textContent = pet.type;
+
+        const editButton = document.createElement("td");
+        //editButton.className = "btn btn-primary";
+        editButton.textContent = "Edit";
+        editButton.innerHTML=`<a href="common/update/html/update.html?id=${pet.id}">|Edit|</a>`;
+        //editButton.link=`<a href="common/update/html/update.html?id=${pet.id}"></a>`;
+        
+        editCell.appendChild(editButton);
+
+        row.appendChild(idCell);
+        row.appendChild(nameCell);
+        row.appendChild(typeCell);
+        row.appendChild(editCell);
+
+        items.appendChild(row);
     });
 }).catch(error => {
     console.error('Error fetching data:', error);
